@@ -1,20 +1,17 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Cameras', {
+    return queryInterface.createTable('cameras', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      cameraId: {
-        type: Sequelize.NUMBER
-      },
       date: {
         type: Sequelize.STRING
       },
-      image: {
+      snapshot: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -28,6 +25,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Cameras');
+    return queryInterface.dropTable('cameras');
   }
 };

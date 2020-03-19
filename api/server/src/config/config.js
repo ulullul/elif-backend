@@ -9,9 +9,9 @@ module.exports = {
   // },
 
   development: {
-    database: 'school',
-    username: 'postgres',
-    password: process.env.DB_PASS,
+    database: 'camera_view',
+    username: 'andri',
+    password: 'bvzbvz1010',
     host: '127.0.0.1',
     dialect: 'postgres'
   },

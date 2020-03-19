@@ -1,12 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Camera = sequelize.define('Camera', {
-    cameraId: DataTypes.NUMBER,
+  const camera = sequelize.define('camera', {
     date: DataTypes.STRING,
-    image: DataTypes.STRING
+    snapshot: DataTypes.STRING
   }, {});
-  Camera.associate = function(models) {
+  camera.associate = function(models) {
     // associations can be defined here
   };
-  return Camera;
+  return camera;
 };
