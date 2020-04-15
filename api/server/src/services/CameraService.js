@@ -1,5 +1,5 @@
-import database from '../models';
 import last from 'lodash/last';
+import database from '../models';
 
 class CameraService {
   static getAllSnapshots() {

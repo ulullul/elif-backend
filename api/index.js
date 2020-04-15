@@ -4,9 +4,9 @@ import bodyParser from 'body-parser';
 import fs from 'fs';
 import path from 'path';
 import morgan from 'morgan';
+import cors from 'cors';
 import testRoutes from './server/src/routes/TestRoutes';
 import cameraRoutes from './server/src/routes/CameraRoutes';
-import cors from 'cors';
 
 config.config();
 
