@@ -5,7 +5,6 @@ import fs from 'fs';
 import path from 'path';
 import morgan from 'morgan';
 import cors from 'cors';
-import testRoutes from './server/src/routes/TestRoutes';
 import cameraRoutes from './server/src/routes/CameraRoutes';
 
 config.config();
@@ -18,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const port = process.env.PORT || 8000;
 
-app.use('/api/v1/test', testRoutes);
+
 app.use('/api/camera', cameraRoutes);
 // when a random route is inputed
 app.get('*', (req, res) => res.status(200).send({
