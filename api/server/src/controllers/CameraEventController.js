@@ -4,10 +4,7 @@ import Util from '../utils/Utils';
 const util = new Util();
 
 class CameraEventController {
-  static async getAllSnapshots(request, response) {
-    response.setHeader('Content-Type', 'text/event-stream');
-    return util.send(response);
-  }
+  static getAllSnapshots() {}
 
   static async addSnapshot(request, response) {
     if (request.body.nothingChanged) {
@@ -15,7 +12,7 @@ class CameraEventController {
       // return util.send(response);
       return response.sse.broadcast.event('nothingChanged', 'nothing changed');
     }
-    if (!request.body.snapshot || !request.body.date) {
+    if (!request.body.snapshot || !request.body.date || !request.body.time) {
       util.setError(400, 'Incomplete task');
       return util.send(response);
     }
@@ -24,9 +21,7 @@ class CameraEventController {
       const createdRecord = await CameraService.addCameraSnapshot(
         newSnapshot
       );
-      console.log(response.sse);
       // response.setHeader('Content-Type', 'text/event-stream');
-      console.log(JSON.stringify(createdRecord));
       return response.sse.broadcast.event('faceDetected', `${JSON.stringify(createdRecord)}`);
       // util.setSuccess(201, 'Snapshot added', createdRecord);
       // return util.send(response);

@@ -1,4 +1,3 @@
-import last from 'lodash/last';
 import database from '../models';
 
 class CameraService {
@@ -6,8 +5,8 @@ class CameraService {
     return database.Camera.findAll();
   }
 
-  static addCameraSnapshot(snapshot, date) {
-    return database.Camera.create(snapshot, date);
+  static addCameraSnapshot(snapshot, date, time) {
+    return database.Camera.create(snapshot, date, time);
   }
 
   static getLastSnapshot() {

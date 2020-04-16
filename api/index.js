@@ -6,6 +6,7 @@ import path from 'path';
 import morgan from 'morgan';
 import cors from 'cors';
 import cameraRoutes from './server/src/routes/CameraRoutes';
+import testRoutes from './server/src/routes/TestRoutes'
 
 config.config();
 
@@ -19,6 +20,7 @@ const port = process.env.PORT || 8000;
 
 
 app.use('/api/camera', cameraRoutes);
+app.use('/api/test', testRoutes);
 // when a random route is inputed
 app.get('*', (req, res) => res.status(200).send({
   message: 'Welcome to this API.',

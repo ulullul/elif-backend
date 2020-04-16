@@ -1,4 +1,4 @@
-
+'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Cameras', {
@@ -8,11 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      snapshot: {
-        type: Sequelize.TEXT
-      },
       date: {
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
+      },
+      time: {
+        type: Sequelize.STRING
+      },
+      snapshot: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
