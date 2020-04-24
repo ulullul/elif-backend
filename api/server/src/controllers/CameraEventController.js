@@ -1,3 +1,4 @@
+import axios from 'axios';
 import CameraService from '../services/CameraService';
 import Util from '../utils/Utils';
 
@@ -8,8 +9,6 @@ class CameraEventController {
 
   static async addSnapshot(request, response) {
     if (request.body.nothingChanged) {
-      // util.setSuccess(200, 'Nothing changed, ok');
-      // return util.send(response);
       return response.sse.broadcast.event('nothingChanged', 'nothing changed');
     }
     if (!request.body.snapshot || !request.body.date || !request.body.time) {
@@ -21,14 +20,14 @@ class CameraEventController {
       const createdRecord = await CameraService.addCameraSnapshot(
         newSnapshot
       );
-      // response.setHeader('Content-Type', 'text/event-stream');
+      await axios.post('https://ves-2020-chat-api.herokuapp.com/api/message?user=200', {
+        text: 'Camera detected face',
+        UserId: '200',
+        imageAttachment: createdRecord.dataValues.snapshot,
+      });
       return response.sse.broadcast.event('faceDetected', `${JSON.stringify(createdRecord)}`);
-      // util.setSuccess(201, 'Snapshot added', createdRecord);
-      // return util.send(response);
     } catch (error) {
       return response.sse.broadcast.event('error', error.message);
-      // util.setError(400, error.message);
-      // return util.send(response);
     }
   }
 }

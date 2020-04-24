@@ -8,10 +8,10 @@ class CameraDataController {
     try {
       const allSnapshots = await CameraService.getAllSnapshots();
       if (allSnapshots.length > 0) {
-        response.setHeader('Content-Type', 'text/event-stream');
+        response.setHeader('Content-Type', 'application/json');
         util.setSuccess(200, 'All snapshots', allSnapshots);
       } else {
-        util.setSuccess(200, 'Snapshots not found');
+        util.setSuccess(404, 'Snapshots not found');
       }
       return util.send(response);
     } catch (error) {
@@ -24,6 +24,7 @@ class CameraDataController {
     try {
       const lastSnapshot = await CameraService.getLastSnapshot();
       if (lastSnapshot.length > 0) {
+        response.setHeader('Content-Type', 'application/json');
         util.setSuccess(200, 'Last snapshot', lastSnapshot);
       } else {
         util.setSuccess(404, 'Snapshot not found');
