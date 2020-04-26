@@ -5,18 +5,13 @@ import CameraDataController from '../controllers/CameraDataController';
 
 const router = Router();
 const hub = new Hub();
-router.route('/events')
+router
+  .route('/events')
   .get(sseHub({ hub }), CameraEventController.getAllSnapshots)
   .post(sseHub({ hub }), CameraEventController.addSnapshot);
 
-router.route('/data')
-  .get(CameraDataController.getAllSnapshots);
+router.route('/data').get(CameraDataController.getAllSnapshots);
 
-router.route('/data/last')
-  .get(CameraDataController.getLastSnapshot);
-// router.route('/:id')
-//   .get(CameraEventController.getAWindow)
-//   .put(CameraEventController.updatedWindow)
-//   .delete(CameraEventController.deleteWindow);
+router.route('/data/last').get(CameraDataController.getLastSnapshot);
 
 export default router;

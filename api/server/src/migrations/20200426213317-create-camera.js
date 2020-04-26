@@ -8,13 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      snapshot: {
+        type: Sequelize.STRING
+      },
       date: {
         type: Sequelize.STRING
       },
       time: {
         type: Sequelize.STRING
       },
-      snapshot: {
+      faces: {
         type: Sequelize.STRING
       },
       createdAt: {

@@ -3,12 +3,6 @@ import TestController from '../controllers/TestController';
 
 const router = Router();
 
-router.route('/test')
-  .get(TestController.getAResponse);
-
-// router.route('/:id')
-//   .get(CameraEventController.getAWindow)
-//   .put(CameraEventController.updatedWindow)
-//   .delete(CameraEventController.deleteWindow);
+router.route('/test').get(TestController.getAResponse);
 
 export default router;

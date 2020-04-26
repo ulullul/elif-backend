@@ -12,7 +12,7 @@ class CameraService {
   static getLastSnapshot() {
     return database.Camera.findAll({
       limit: 1,
-      order: [['id', 'DESC']]
+      order: [['id', 'DESC']],
     });
   }
 }
