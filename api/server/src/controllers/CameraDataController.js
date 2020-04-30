@@ -15,7 +15,7 @@ class CameraDataController {
       }
       return util.send(response);
     } catch (error) {
-      util.setError(400, error);
+      util.setError(500, error);
       return util.send(response);
     }
   }
@@ -31,7 +31,7 @@ class CameraDataController {
       }
       return util.send(response);
     } catch (error) {
-      util.setError(400, error);
+      util.setError(500, error);
       return util.send(response);
     }
   }
