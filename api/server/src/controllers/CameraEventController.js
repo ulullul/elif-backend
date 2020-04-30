@@ -23,11 +23,11 @@ class CameraEventController {
     const newSnapshot = request.body;
     try {
       const createdRecord = await CameraService.addCameraSnapshot(newSnapshot);
-      // await axios.post(process.env.CHAT_MESSAGE_API_URL, {
-      //   text: 'Camera detected face',
-      //   UserId: '200',
-      //   imageAttachment: createdRecord.dataValues.snapshot,
-      // });
+      await axios.post(process.env.CHAT_MESSAGE_API_URL, {
+        text: 'Camera detected face',
+        UserId: '200',
+        imageAttachment: createdRecord.dataValues.snapshot,
+      });
       return response.sse.broadcast.event(
         'faceDetected',
         `${JSON.stringify(createdRecord)}`,
